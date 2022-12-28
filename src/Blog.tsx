@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './styles/App.scss';
 import axios from 'axios';
 
-const url = "localhost%38080/api/groups";
+const url = "localhost%38080/api/posts";
 const POST_OPTIONS = {
   method: 'POST',
   url: url,
@@ -16,17 +16,17 @@ const POST_OPTIONS = {
 
 function Blog(): JSX.Element {
 
-  const [groups, setGroups] = useState<any>([]);
+  const [posts, setposts] = useState<any>([]);
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
 
   useEffect(() => {
     setLoading(true);
 
-    fetch('api/groups')
+    fetch('api/posts')
       .then(response => response.json())
       .then(data => {
-        setGroups(data);
+        setposts(data);
         setLoading(false);
         console.log(data)
       })
@@ -43,10 +43,10 @@ function Blog(): JSX.Element {
 
   async function handleSubmit(event: { preventDefault: () => void; }): Promise<void> {
     event.preventDefault();
-    axios.get('http://localhost:8080/api/groups')
+    axios.get('http://localhost:8080/api/posts')
       .then(response => { if (response.status === 200) {
-        axios.post("http://localhost:8080/api/group", {
-          name: "it do be workin tho..."
+        axios.post("http://localhost:8080/api/post", {
+          title: input,
         })
       }})
       .catch(err => console.log(err))
@@ -57,16 +57,16 @@ function Blog(): JSX.Element {
       <header className="App-header">
         <div>
           {
-            groups.map((group: any) =>
-              <div key={group.id}>
-                {group.name}
+            posts.map((post: any) =>
+              <div key={post.id}>
+                {post.title}
               </div>
             )
           }
         </div>
         <div>
           <form onSubmit={handleSubmit}>
-            <input type="text" name="input" id="0" onChange={() => handleChange} />
+            <input type="text" name="input" onChange={handleChange} />
             <input type="submit" value="submit" />
           </form>
         </div>

@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api/groups': 'http://localhost:8080'
+      '/api/posts': 'http://localhost:8080'
     }
   }
 })
