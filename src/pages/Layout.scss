@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navbar_links:link {
+    color: #03DAC5;
+}
+
+.navbar_links:visited {
+    color: #BB86FC;
+}
+
+.navbar_links:hover {
+    color: #d7bcf8;
+}
+
+.navbar_links:active {
+    color: #72d3c9;
+}
+
+.page_content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 25px;
+}
