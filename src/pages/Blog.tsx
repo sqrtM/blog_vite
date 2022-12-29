@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import './styles/Blog.scss';
+import './Blog.scss';
 
 
 export default function Blog(): JSX.Element {
@@ -47,20 +47,22 @@ export default function Blog(): JSX.Element {
   return (
     <div>
       <header>
-        <div>
+        <div className='post_list_container'>
           {
             posts.map((post: any) =>
-              <div key={post.id} className="link_to_post">
+              <div key={post.id} className="post_list_entry">
+                <div className="link_to_blog_post">
                   <Link to={`/post/` + post.id} className="link_text">{post.title}</Link>
+                </div>
+                <div>
+                <Link to={`/post/` + post.id + '/edit'} className="edit_button"><input type="button" value="edit" className='edit_button'/></Link>
+                </div>
               </div>
             )
           }
         </div>
-        <div>
-          <form onSubmit={handleSubmit}>
-            <input type="text" name="input" onChange={handleChange} className="input_styles"/>
-            <input type="submit" value="submit" className='submit_styles' />
-          </form>
+        <div className="link_text">
+          <Link to={`/blog/new_post`} className="link_text">make a new post</Link>
         </div>
       </header>
     </div>
