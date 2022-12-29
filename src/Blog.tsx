@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import './styles/Blog.scss';
 
 
-function Blog(): JSX.Element {
+export default function Blog(): JSX.Element {
 
-  const [posts, setposts] = useState<any>([]);
+  const [posts, setPosts] = useState<any>([]);
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
 
@@ -17,9 +17,8 @@ function Blog(): JSX.Element {
     fetch('api/posts')
       .then(response => response.json())
       .then(data => {
-        setposts(data);
+        setPosts(data);
         setLoading(false);
-        console.log(data)
       })
   }, []);
 
@@ -52,7 +51,7 @@ function Blog(): JSX.Element {
           {
             posts.map((post: any) =>
               <div key={post.id} className="link_to_post">
-                  <Link to={`/posts/` + post.title} className="link_text">{post.title}</Link>
+                  <Link to={`/post/` + post.id} className="link_text">{post.title}</Link>
               </div>
             )
           }
@@ -68,4 +67,3 @@ function Blog(): JSX.Element {
   );
 }
 
-export default Blog;
