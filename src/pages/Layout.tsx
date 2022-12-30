@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
-import './Layout.scss';
+import './styles/Layout.scss';
 
-const Layout = () => {
+export default function Layout() {
   return (
     <>
       <nav className="navbar">
@@ -10,6 +10,9 @@ const Layout = () => {
         </div>
         <div>
           <Link className="navbar_links" to="/blog">blog</Link>
+        </div>
+        <div>
+          <Link className="navbar_links" to="/projects">projects</Link>
         </div>
         <div>
           <Link className="navbar_links" to="/contact">contact</Link>
@@ -22,5 +25,3 @@ const Layout = () => {
     </>
   )
 };
-
-export default Layout;

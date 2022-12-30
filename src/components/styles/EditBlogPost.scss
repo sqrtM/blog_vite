@@ -1,0 +1,49 @@
+.edit_page_container > div {
+    font-size: large;
+
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.edit_page_element_button {
+    border-style: groove;
+    border-radius: 360px;
+    border-color: #BB86FC;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.edit_page_element_input {
+    border-style: groove;
+    border-radius: 20px;
+    border-color: #03DAC5;
+    border-width: 4px;
+    margin-bottom: 15px;
+    height: 20px;
+
+}
+
+#body_input {
+    width: 60%;
+    padding: 10px;
+}
+
+#title_input {
+    width: 30%;
+}
+
+#author_input {
+    width: 30%;
+}
+
+#submit_changes {
+    border-style: groove;
+    border-radius: 360px;
+    border-color: #03DAC5;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: large;
+}

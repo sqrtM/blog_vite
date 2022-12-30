@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
-import BlogPostPage  from './BlogPostPage';
+import BlogPostPage  from './components/BlogPostPage';
 
-import './styles/Home.scss';
+import './main.scss';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import NewPost from './pages/NewPost';
-import EditBlogPost from './pages/EditBlogPost';
+import EditBlogPost from './components/EditBlogPost';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

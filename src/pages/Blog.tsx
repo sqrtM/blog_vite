@@ -1,17 +1,18 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import './Blog.scss';
+import './styles/Blog.scss';
+import { PostDetailsType } from '../components/types';
 
 
 export default function Blog(): JSX.Element {
 
-  const [posts, setPosts] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
-  const [input, setInput] = useState("");
+  const [posts, setPosts] = useState<PostDetailsType[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [input, setInput] = useState<string>("");
 
-  useEffect(() => {
+  useEffect((): void => {
     setLoading(true);
 
     fetch('api/posts')
@@ -24,10 +25,6 @@ export default function Blog(): JSX.Element {
 
   if (loading) {
     return <p>Loading...</p>;
-  }
-
-  function handleChange(event: ChangeEvent<HTMLInputElement>): void {
-    setInput(event.target.value);
   }
 
 
