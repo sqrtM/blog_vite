@@ -36,7 +36,7 @@ export default function Home() {
           </p>
           <p>
             I think I wrote my first Python programs when I was ten and playing around with
-            the (now sadly discontinued) <a href="https://github.com/blender/blender">Blender 
+            the (now sadly deprecated since v2.8) <a href="https://github.com/blender/blender">Blender 
             Game Engine</a>. I didn't write many programs over the next few years because I 
             got really busy with trying to launch an ill-fated career as a jazz musician, but 
             I still spent a lot of time on <a href="https://projecteuler.net/">

@@ -1,45 +1,38 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { PostDetailsType } from './types';
+import { DefaultPostDetails, PostDetailsType } from './types';
 
 import './styles/EditBlogPost.scss'
 import ReactTextareaAutosize from 'react-textarea-autosize';
+import Loading from './Loading';
 
-export default function EditBlogPost() {
+export default function EditBlogPost(): JSX.Element {
 
   const { postID } = useParams();
-  const [postDetails, setPostDetails] = useState<PostDetailsType>({
-    author: "",
-    body: "",
-    comments: [],
-    date: "",
-    id: 0,
-    title: ""
-  });
+  const [postDetails, setPostDetails] = useState<PostDetailsType>(DefaultPostDetails);
   const [selectedInputField, setSelectedInputField] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
+  const [onDeleteScreen, setOnDeleteScreen] = useState<boolean>(false);
+  const [isPostDeleted, setIsPostDeleted] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState({ done: false, response: 0 });
 
-
-  axios.get('http://localhost:8080/api/post/' + postID)
-    .then((response): void => {
-      if (response.status === 200 && loading) {
-        setPostDetails({
-          author: response.data.author,
-          body: response.data.body,
-          comments: response.data.comments,
-          date: response.data.date,
-          id: response.data.id,
-          title: response.data.title
-        })
-        setLoading(false)
-      }
-    });
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/post/' + postID)
+      .then((response): void => {
+        if (response.status === 200 && loading) {
+          setPostDetails({
+            author: response.data.author,
+            body: response.data.body,
+            comments: response.data.comments,
+            date: response.data.date,
+            id: response.data.id,
+            title: response.data.title
+          });
+          setLoading(false)
+        }
+      });
+  }, []);
 
   function handleChange(event: { target: { value: string; }; }) {
     setPostDetails({
@@ -48,12 +41,57 @@ export default function EditBlogPost() {
     });
   }
 
-  function handleSubmit() {
+  function handleSubmit(): void {
+    setLoading(true);
     axios.put('http://localhost:8080/api/post/' + postID, postDetails)
       .then(res => {
-        if (res.status != 200) { console.log(res); }
+        if (res.status != 200) {
+          console.log(res);
+        }
+        setLoading(false);
         setIsEditing({ done: true, response: res.status });
       });
+  }
+
+  if (onDeleteScreen) {
+    function handlePostDeletion(): void {
+      setLoading(true);
+      axios.delete('http://localhost:8080/api/post/' + postID)
+        .then(res => {
+          if (res.status != 200) {
+            console.log(res);
+          }
+          setLoading(false);
+          setIsPostDeleted(true);
+        });
+    }
+    return isPostDeleted ? (
+      <div>
+        <p>
+          post successfully deleted
+        </p>
+        <p>
+          <Link to={`/blog`} className="edit_page_element_button">
+            <input type="button" value="return to blog" className='edit_page_element_button' />
+          </Link>
+        </p>
+      </div>
+    ) : (
+      <div>
+        <p>
+          are you sure you want to delete this post?
+        </p>
+        <p>
+          this action cannot be undone.
+        </p>
+        <p>
+          <input type="button" value="return to edit page" className='edit_page_element_button' onClick={() => setOnDeleteScreen(false)} />
+        </p>
+        <p>
+          <input type="button" value="delete post" id='confirm_delete_post' onClick={handlePostDeletion} />
+        </p>
+      </div>
+    );
   }
 
   if (isEditing.done) {
@@ -85,7 +123,11 @@ export default function EditBlogPost() {
             <input type="button" value="return to blog" className='edit_page_element_button' />
           </Link>
         </p>
-        </div>
+      </div>
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   return (
@@ -119,6 +161,9 @@ export default function EditBlogPost() {
       </div>
       <div>
         <input type="button" value="submit changes" id='submit_changes' onClick={handleSubmit} />
+      </div>
+      <div>
+        <input type="button" value="delete post" id='delete_post' onClick={() => setOnDeleteScreen(true)} />
       </div>
     </div>
   );

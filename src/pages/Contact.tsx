@@ -1,3 +1,5 @@
+import Loading from "../components/Loading";
+
 export default function Contact() {
   return (
     <div>
@@ -5,7 +7,7 @@ export default function Contact() {
         contact me
       </div>
       <div>
-      
+        
       </div>
     </div>
   );

@@ -1,42 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Marked } from '@ts-stack/markdown';
 
 import './styles/BlogPostPage.scss';
-import { PostDetailsType } from './types';
+import { DefaultPostDetails, PostDetailsType } from './types';
+import Loading from './Loading';
 
 export default function BlogPostPage(): JSX.Element {
 
   const { postID } = useParams();
-  const [postDetails, setPostDetails] = useState<PostDetailsType>({
-    author: "",
-    body: "",
-    comments: [],
-    date: "",
-    id: 0,
-    title: ""
-  });
+  const [postDetails, setPostDetails] = useState<PostDetailsType>(DefaultPostDetails);
   const [loading, setLoading] = useState(true);
 
-
-  axios.get('http://localhost:8080/api/post/' + postID)
-    .then(response => {
-      if (response.status === 200 && loading) {
-        setPostDetails({
-          author: response.data.author,
-          body: response.data.body,
-          comments: response.data.comments,
-          date: response.data.date,
-          id: response.data.id,
-          title: response.data.title
-        })
-        setLoading(false)
-      }
-    });
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/post/' + postID)
+      .then(response => {
+        if (response.status === 200 && loading) {
+          setPostDetails({
+            author: response.data.author,
+            body: response.data.body,
+            comments: response.data.comments,
+            date: response.data.date,
+            id: response.data.id,
+            title: response.data.title
+          })
+          setLoading(false)
+        }
+      });
+  }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (

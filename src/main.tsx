@@ -10,6 +10,7 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import NewPost from './pages/NewPost';
 import EditBlogPost from './components/EditBlogPost';
+import Projects  from './pages/Projects';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           <Route path="blog" element={<Blog />} />
           <Route path="blog/new_post" element={<NewPost />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="projects" element={<Projects />} />
           <Route path="post/:postID" element={<BlogPostPage />}/>
           <Route path="post/:postID/edit" element={<EditBlogPost />}/>
         </Route>

@@ -17,6 +17,9 @@ export default function Layout() {
         <div>
           <Link className="navbar_links" to="/contact">contact</Link>
         </div>
+        <div>
+          <a className="navbar_links" href="/contact">contact</a>
+        </div>
       </nav>
 
       <div className="page_content">

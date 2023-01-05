@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 
 import './styles/Blog.scss';
 import { PostDetailsType } from '../components/types';
+import Loading from '../components/Loading';
 
 
 export default function Blog(): JSX.Element {
 
   const [posts, setPosts] = useState<PostDetailsType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [input, setInput] = useState<string>("");
 
+  // change this to an axios call
   useEffect((): void => {
     setLoading(true);
-
     fetch('api/posts')
       .then(response => response.json())
       .then(data => {
@@ -24,21 +24,7 @@ export default function Blog(): JSX.Element {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
-  }
-
-
-  async function handleSubmit(event: { preventDefault: () => void; }): Promise<void> {
-    event.preventDefault();
-    axios.get('http://localhost:8080/api/posts')
-      .then(response => {
-        if (response.status === 200) {
-          axios.post("http://localhost:8080/api/post", {
-            title: input,
-          })
-        }
-      })
-      .catch(err => console.log(err))
+    return <Loading />;
   }
 
   return (
