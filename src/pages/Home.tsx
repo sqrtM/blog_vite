@@ -15,7 +15,7 @@ export default function Home() {
             <ul>
               <li>jazz musician</li>
               <li>QMUL school of philosophy alumnus</li>
-              <li>programming language appreciator</li>
+              <li>abstract programming language appreciator</li>
               <li>favorite doom 2 map: E2M4</li>
             </ul>
           </div>

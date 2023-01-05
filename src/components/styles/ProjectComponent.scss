@@ -1,0 +1,40 @@
+.project_container {
+    display: flex;
+    flex-direction: column;
+    border-style: groove;
+    border-radius: 360px;
+    border-color: #03DAC5;
+    border-width: 4px;
+    margin-bottom: 15px;
+}
+
+.project_title {
+    margin-bottom: 0px;
+    font-size: larger;
+    background-color: transparent;
+}
+
+.project_title > a {
+    margin-bottom: 0px;
+    font-size: larger;
+    background-color: transparent;
+}
+
+.project_icon {
+    margin: 20px;
+    max-width: 50px;
+    height: auto;
+}
+
+.link_and_description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    margin: 5px;
+    font-size: large;
+}
+
+.link_and_description > a {
+    background-color: transparent;
+}
