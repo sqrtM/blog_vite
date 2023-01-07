@@ -12,6 +12,7 @@ import NewPost from './pages/NewPost';
 import EditBlogPost from './components/EditBlogPost';
 import Projects  from './pages/Projects';
 
+// TODO: turn the {title, author, date, comments, body} field of both the edit and create pages into a single component.
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

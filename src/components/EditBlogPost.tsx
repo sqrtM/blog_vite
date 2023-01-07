@@ -6,6 +6,7 @@ import { DefaultPostDetails, PostDetailsType } from './types';
 import './styles/EditBlogPost.scss'
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import Loading from './Loading';
+import { Marked } from '@ts-stack/markdown';
 
 export default function EditBlogPost(): JSX.Element {
 
@@ -155,7 +156,7 @@ export default function EditBlogPost(): JSX.Element {
         <input type='button' value='edit' onClick={() => setSelectedInputField(selectedInputField === "comments" ? "" : "comments")} className='edit_page_element_button' id='comment_input' />
       </div>
       <div className='edit_page_element'>
-        body : {postDetails.body}
+        body : <div className='post_body' dangerouslySetInnerHTML={{ __html: Marked.parse(postDetails.body) }} />
         <input type='button' value='edit' onClick={() => setSelectedInputField(selectedInputField === "body" ? "" : "body")} className='edit_page_element_button' />
         {selectedInputField === "body" && <ReactTextareaAutosize value={postDetails.body} onChange={handleChange} className='edit_page_element_input' id='body_input' />}
       </div>
