@@ -1,13 +1,3 @@
-.edit_page_container > div {
-    font-size: large;
-
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-}
-
 .edit_page_element_button {
     border-style: groove;
     border-radius: 360px;
@@ -24,19 +14,6 @@
     margin-bottom: 15px;
     height: 20px;
 
-}
-
-#body_input {
-    width: 60%;
-    padding: 10px;
-}
-
-#title_input {
-    width: 30%;
-}
-
-#author_input {
-    width: 30%;
 }
 
 #submit_changes {

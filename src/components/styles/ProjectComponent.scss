@@ -4,24 +4,24 @@
     border-style: groove;
     border-radius: 360px;
     border-color: #03DAC5;
-    border-width: 4px;
+    border-width: 10px;
     margin-bottom: 15px;
+    
 }
 
 .project_title {
-    margin-bottom: 0px;
+    margin: 10px;
     font-size: larger;
     background-color: transparent;
 }
 
 .project_title > a {
-    margin-bottom: 0px;
     font-size: larger;
     background-color: transparent;
 }
 
 .project_icon {
-    margin: 20px;
+    margin: 15px;
     max-width: 50px;
     height: auto;
 }
@@ -31,10 +31,18 @@
     flex-direction: row;
     align-items: center;
     background-color: transparent;
-    margin: 5px;
     font-size: large;
 }
 
 .link_and_description > a {
+    background-color: transparent;
+}
+
+.link_and_description > a > img {
+    background-color: transparent;
+}
+
+.link_and_description > p {
+    margin-right: 10px;
     background-color: transparent;
 }

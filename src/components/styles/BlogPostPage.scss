@@ -20,7 +20,7 @@
 .post_title {
     font-size: xx-large;
     border: 10px;
-    padding: 4%;
+    padding: 2%;
     border-radius: 360px;
     border-style: groove;
     border-color: #03DAC5;
@@ -30,7 +30,7 @@
 
 .post_author {
     border: 4px;
-    padding: 2%;
+    padding: 0.5%;
     border-radius: 360px;
     border-style: groove;
     border-color: #BB86FC;
@@ -38,14 +38,15 @@
 }
 
 .post_body {
+    margin: 1%;
     border: 10px;
     padding: 1%;
-    border-radius: 3%;
     border-style: groove;
     border-color: #ffffff;
 
     font-size: 18px;
     line-height: 20px;
+    max-width:inherit;
 
     text-align: justify;
 }

@@ -16,7 +16,9 @@ export function ProjectComponent(props: IProjectComponentProps) {
       <a href={props.githubLink}>{props.title}</a>
       </p>
       <div className='link_and_description'>
-        <a href={props.githubLink}><img src={props.iconLink} alt="@" className='project_icon' /></a>
+        <a href={props.githubLink}>
+          <img src={props.iconLink} alt="@" className='project_icon' />
+        </a>
         <p>
           {props.description}
         </p>

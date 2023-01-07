@@ -134,25 +134,30 @@ export default function EditBlogPost(): JSX.Element {
   return (
     <div className='edit_page_container'>
       <div className='edit_page_element'>
-        post id : {postDetails.id}
+        <div>post id :</div>
+        <div className='set_values'>{postDetails.id}</div>
       </div>
       <div className='edit_page_element'>
-        title : {postDetails.title}
+        <div>title :</div>
+        <div className='set_values'>{postDetails.title}</div>
         <input type='button' value='edit' onClick={() => setSelectedInputField(selectedInputField === "title" ? "" : "title")} className='edit_page_element_button' />
         {selectedInputField === "title" && <input type='text' value={postDetails.title} onChange={handleChange} className='edit_page_element_input' id='title_input' />}
       </div>
       <div className='edit_page_element'>
-        author : {postDetails.author}
+        <div>author :</div>
+        <div className='set_values'>{postDetails.author}</div>
         <input type='button' value='edit' onClick={() => setSelectedInputField(selectedInputField === "author" ? "" : "author")} className='edit_page_element_button' />
         {selectedInputField === "author" && <input type='text' value={postDetails.author} onChange={handleChange} className='edit_page_element_input' id='author_input' />}
       </div>
       <div className='edit_page_element'>
-        date : {postDetails.date}
+        <div>date :</div>
+        <div className='set_values'>{postDetails.date}</div>
         <input type='button' value='edit' onClick={() => setSelectedInputField(selectedInputField === "date" ? "" : "date")} className='edit_page_element_button' />
         {selectedInputField === "date" && <input type='text' value={postDetails.date} onChange={handleChange} className='edit_page_element_input' id='date_input' />}
       </div>
       <div className='edit_page_element'>
-        comments : {postDetails.comments}
+        <div>comments :</div>
+        <div className='set_values'>{postDetails.comments}</div>
         <input type='button' value='edit' onClick={() => setSelectedInputField(selectedInputField === "comments" ? "" : "comments")} className='edit_page_element_button' id='comment_input' />
       </div>
       <div className='edit_page_element'>

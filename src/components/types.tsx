@@ -16,3 +16,7 @@ export const DefaultPostDetails: PostDetailsType =
   id: 0,
   title: ""
 }
+
+export const randomFacts: string[] = [
+  "favorite doom2 map",
+]; 
