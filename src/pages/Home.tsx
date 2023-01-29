@@ -1,7 +1,12 @@
+import { randomFacts } from '../components/types';
 import './styles/Home.scss';
+import { useEffect } from 'react';
 
 
 export default function Home() {
+
+  let randomFactIndex = Math.floor(Math.random() * randomFacts.length) ;
+
   return (
     <div id="home_header">
       <div id="picture_and_welcome_container">
@@ -10,13 +15,13 @@ export default function Home() {
         </div>
         <div id="welcome">
           <p id="welcome_name">hey, i'm mason</p>
-          <p id="welcome_title">software developer</p>
+          <p id="welcome_title">full stack developer</p>
           <div id='infobox'>
             <ul>
               <li>jazz musician</li>
               <li>QMUL school of philosophy alumnus</li>
-              <li>abstract programming language appreciator</li>
-              <li>favorite doom 2 map: E2M4</li>
+              <li>rust appreciator</li>
+              <li>{randomFacts[randomFactIndex][0] + ': ' + randomFacts[randomFactIndex][1]}</li>
             </ul>
           </div>
         </div>
